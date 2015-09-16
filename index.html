@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.3/angular.js" data-semver="1.4.3"></script>
+    <script src="app.js"></script>
+    <script src="flux.js"></script>
+    <script src="events.js"></script>
+    <script src="Actions.js"></script>
+    <script src="CatalogActions.js"></script>
+    <script src="CatalogStore.js"></script>
+    <script src="CartActions.js"></script>
+    <script src="CartStore.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl as mc">
+    <h1>Catalog</h1>
+    <div ng-repeat="item in mc.catalogItems">
+      <span>{{item.title}}</span>
+      <span>{{item.cost | currency:'£':0}}</span>
+      <button ng-click="mc.addItem(item)">Add to Cart</button>
+    </div>
+    
+    <h1>Shopping Cart</h1>
+    <div>
+      <div ng-if="mc.cartItems.length==0">
+        Empty
+      </div>
+      <div ng-repeat="item in (filtered = mc.cartItems | orderBy:['data.title']) track by $id(item)">
+        <span>{{item.data.title}}</span>
+        <span>x {{item.qty}}</span>
+        <span>- {{item.qty*item.data.cost | currency:'£':0}}</span>
+        <button ng-click="mc.removeItem(item)">x</button>
+      </div>
+      <div ng-if="mc.total"><strong>Total: {{mc.total | currency:'£':0}}</strong></div>
+    </div>
+  </body>
+
+</html>

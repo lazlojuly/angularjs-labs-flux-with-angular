@@ -1,0 +1,17 @@
+[
+   {
+      "id": 1,
+      "title": "Angular Connect Ticket (Round 1)",
+      "cost": 550
+   },
+   {
+      "id": 2,
+      "title": "Workshop: Intro to Angular 2 (with John Lindquist)",
+      "cost": 300
+   },
+   {
+      "id": 3,
+      "title": "Workshop: Preparing to Upgrade to Angular 2",
+      "cost": 300
+   }
+]
